@@ -138,6 +138,8 @@ void* DNSServer::Work(void* arg)
             server->rx_queue.push(msg);
         }
     }
+	
+	return NULL;
 }
 
 int DNSServer::GetHeader(const char* buff, int len, int &pos, DNSHeader* header)
@@ -157,6 +159,7 @@ int DNSServer::GetHeader(const char* buff, int len, int &pos, DNSHeader* header)
     header->flags = buff[pos + 2];
     header->flags <<= 8;
     header->flags = header->flags | buff[pos + 3];
+	header->GetFlags();
     
     //解析请求数量
     header->question_count = buff[pos + 4];

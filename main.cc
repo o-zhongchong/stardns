@@ -1,4 +1,3 @@
-#include <cstdio>
 #include "dns_server.h"
 
 int main(int argc, char** argv)
@@ -12,7 +11,7 @@ int main(int argc, char** argv)
         {
             DNSMessage* msg = server->rx_queue.front();
             server->rx_queue.pop();
-            printf("收到客户端%s:%d发来的请求\n", msg->ip.c_str(), msg->port);
+            printf("收到客户端 %s:%d 发来的请求\n", msg->ip.c_str(), msg->port);
             delete msg;
             msg = nullptr;
         }
