@@ -20,24 +20,38 @@ public:
     
 protected:
     //工作线程解析DNS报文
-    static void* Work(void* arg);
+    static void* RecvWorker(void* arg);
+    static void* SendWorker(void* arg);
     
     //DNS报文头部解析函数
-    static int GetHeader(const char* buff, int len, int &pos, DNSHeader* msg);
+    static int GetHeader(const char* buff, int len, int &pos, DNSHeader* header);
     
-    //DNS报文查询段解析函数
-    static int GetQuestion(const char* buff, int length, int &pos, DNSQuery* query);
-
+    //DNS报文问题区域解析函数
+    static int GetQuestion(const char* buff, int len, int &pos, DNSQuery* query);
+    
+    //计算DNS报文对象长度
+    static int GetMessageLength(DNSMessage* msg);
+    
+    //DNS报文头部填充函数
+    static int SetHeader(char* buff, int len, int &pos, DNSHeader* header);
+    
+    //DNS报文问题区域填充函数
+    static int SetQuestion(char* buff, int len, int &pos, DNSQuery* query);
+    
+    //DNS报文回答区域填充函数
+    static int SetAnswer(char* buff, int len, int &pos, DNSAnswer* answer);
+    
 public:
     //DNS请求队列
     queue<DNSMessage*> rx_queue;
     
-    //DNS响应队列
+    //DNS发送队列
     queue<DNSMessage*> tx_queue;
     
 protected:
     //工作线程
-    pthread_t thread_id;
+    pthread_t recv_thread_id;
+    pthread_t send_thread_id;
     bool thread_running;
     
     //服务端socket

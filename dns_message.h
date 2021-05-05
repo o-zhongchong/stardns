@@ -25,19 +25,19 @@ public:
     string ip;
     int port;
     
-    //报文头部
+    //DNS报文头部
     DNSHeader* header;
     
-    //Questions
+    //DNS报文查询问题数
     vector<DNSQuery*> questions;
     
-    //Answer RRs
+    //DNS报文回答数
     vector<DNSAnswer*> answers;
     
-    //Authority RRs
+    //DNS报文授权回答数
     vector<DNSAnswer*> authority_answers;
     
-    //Additional
+    //DNS报文附加内容数
     vector<DNSAnswer*> additional_answers;
 };
 

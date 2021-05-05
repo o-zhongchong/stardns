@@ -3,6 +3,7 @@
 DNSAnswer::DNSAnswer()
 {
     //资源记录数据初始化
+	len = 0;
     data = nullptr;
 }
 
