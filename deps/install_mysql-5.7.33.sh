@@ -3,6 +3,8 @@
 CWD=$(dirname $(readlink -f $0))  
 cd $CWD
 
+wget https://cdn.mysql.com/archives/mysql-5.7/mysql-5.7.33-el7-x86_64.tar.gz -O /data/mysql-5.7.33-el7-x86_64.tar.gz
+
 yum -y install numactl
 service mysql stop
 
