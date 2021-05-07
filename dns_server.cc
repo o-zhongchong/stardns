@@ -108,7 +108,7 @@ void* DNSServer::RecvWorker(void* arg)
         if(recv_len > 0)
         {
             //调试输出
-            printf("收到字节数 %d\n", recv_len);
+            //printf("收到字节数 %d\n", recv_len);
             
             //创建DNS报文对象
             DNSMessage* msg = new DNSMessage();
@@ -175,7 +175,7 @@ void* DNSServer::SendWorker(void* arg)
             int pos = 0;
             
             //调试输出
-            printf("响应报文字节数%d\n", max_buff_size);
+            //printf("待发送字节数%d\n", max_buff_size);
             
             //填充DNS报文头到发送缓冲区
             SetHeader(buff, max_buff_size, pos, msg->header);
