@@ -8,19 +8,14 @@ using std::string;
 class Config
 {
 public:
-    Config();
+    Config(string filepath);
     virtual ~Config();
-    
-public:
-    //MySQL数据库连接串
-    string ip;
-    int port;
-    string user;
-    string passwd;
-	string db;
-    
+	int LoadConfig();
+	
 protected:
-    string config_file;
+    string filepath;
+	unordered_map<string, int> config_map1;
+	unordered_map<string, string> config_map2;
 };
 
 #endif

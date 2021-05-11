@@ -1,11 +1,16 @@
 #include "config.h"
 
-Config::Config()
+Config::Config(string filepath)
 {
 	
 }
 
 Config::~Config()
+{
+	
+}
+
+int Config::LoadConfig()
 {
 	
 }
